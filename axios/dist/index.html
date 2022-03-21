@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./axios.js"></script>
+<script>
+debugger
+    axios.interceptors.request.use(function (config) {
+        // Do something before request is sent
+        return config;
+    }, function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    });
+    axios.interceptors.response.use(function (response) {
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        return response;
+    }, function (error) {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+        return Promise.reject(error);
+    });
+    axios.get('https://mock.presstime.cn/mock/6237f3a1560ad30022585979/user/list').then(res => {
+        console.log(res)
+    })
+
+</script>
+
+</html>
