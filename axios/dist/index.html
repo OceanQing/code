@@ -13,7 +13,10 @@
 </body>
 <script src="./axios.js"></script>
 <script>
-debugger
+    axios = axios.create({
+        baseURL: 'https://mock.presstime.cn/mock/6237f3a1560ad30022585979/',
+        timeout: 1000
+    })
     axios.interceptors.request.use(function (config) {
         // Do something before request is sent
         return config;
@@ -24,14 +27,31 @@ debugger
     axios.interceptors.response.use(function (response) {
         // Any status code that lie within the range of 2xx cause this function to trigger
         // Do something with response data
-        return response;
+        // console.log(response)
+        // const { status } = response
+        // if (res.)
+        console.log('response response', response)
+        if (response.status === 200) {
+            return Promise.reject(response)
+        } else {
+            return Promise.resolve(response)
+        }
+        // return response
+        // return  status === 200 ? Promise.reject('状态是200') : '状态不是200'
     }, function (error) {
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
-        return Promise.reject(error);
+        console.log(error)
+        console.log(error.code)
+        return Promise.reject(error)
     });
-    axios.get('https://mock.presstime.cn/mock/6237f3a1560ad30022585979/user/list').then(res => {
-        console.log(res)
+    axios.get('/user/list',{name: 122}).then(res => {
+        console.log('res',res)
+    }).catch(error=>{
+        console.log('error, ',error)
+    })
+    axios.post('/user/list',{name: 133}).then(res => {
+        console.log('res',res)
+    }).catch(error=>{
+        console.log('error, ',error)
     })
 
 </script>

@@ -158,6 +158,7 @@ module.exports = function xhrAdapter(config) {
     }
 
     var fullPath = buildFullPath(config.baseURL, config.url);
+    console.log(fullPath)
     request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
 
     // Set the request timeout in MS
@@ -324,6 +325,8 @@ module.exports = function xhrAdapter(config) {
     }
 
     // Send the request
+    debugger
+    console.log(requestData)
     request.send(requestData);
   });
 };
