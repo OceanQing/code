@@ -87,3 +87,7 @@ v-model v-if v-show v-on v-once v-html v-text
 ### 33.router和$route的区别
 ### 34.vue单项数据流
 ### 35.vuex页面刷新数据丢失
+
+### vue首次渲染
+
+* vue template 转成ast语法，ast语法再转成 render函数 执行render函数会生成vnode，将vnode和旧的vnode进行对比 生成真实dom，挂载到父元素上
