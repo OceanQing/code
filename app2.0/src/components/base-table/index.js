@@ -1,6 +1,9 @@
 import { Table } from 'ant-design-vue'
 export default {
   name: 'BaseTable',
+  components: {
+    ATable: Table
+  },
   props: Object.assign({}, Table.props, {}),
   data() {
     return {
